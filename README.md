@@ -1,2 +1,2 @@
 # Some-thing-of-Tkinter
-I do this, when I was learning the Tkinter .
+I done these, when I was learning the Tkinter .
