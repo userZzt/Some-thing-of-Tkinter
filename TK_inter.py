@@ -5,7 +5,7 @@
 
 '''
 from tkinter import *
-from PIL import Image, ImageTk
+from PIL import ImageTk
 #——————————————————————————————————————————————————————————————————————————————————————————————————
 # app = tk.Tk()
 # app.title('Tommy_Sea')
@@ -48,39 +48,50 @@ def Go_now():
     'This is the function of button command.'
     var.set("Where would you wanna go?")
 
-def Home_page():
+
+def Text_Prompt():
     'The whole is divided into two frames, \
     one is a text prompt and the other is a button function, \
     so two frames should be used.'
-    frame1 = Frame(root)#This is the frame of text prompt
-    frame2 = Frame(root)#This is the frame of button of function
 
-    #Here is the codes of text prompt.
-    photo = ImageTk.PhotoImage(file=r"I:\Learning_of_Python\pictures\glass.jpg")#Get the picture here
-    var.set("万里晴空!\n情寄草原！")#Here is the value of text,the type is StringVar.
-    #The textvariable is different from text, it will show a variable whose type is 'StringVar'.
-    #We can set is via the ver.set().
-    theLabel = Label(frame1,
-                     textvariable=var,
-                     justify=LEFT,
-                     fg='black',
-                     image=photo,
-                     compound=CENTER,
-                     font=('华文行楷', 40)
-                     )
-
-    #Here is the codes of button.
-    theButton = Button(frame2,
-                       text='现在出发！',
-                       command=Go_now)
-    
-    theLabel.pack()
-    theButton.pack()
-    frame1.pack(padx=10, pady=10)
-    frame2.pack(padx=10, pady=10)
+    # Here is the codes of text prompt.
+    var.set("万里晴空!\n情寄草原！")  # Here is the value of text,the type is StringVar.
+    # The textvariable is different from text, it will show a variable whose type is 'StringVar'.
+    # We can set is via the ver.set().
+    Text_label = Label(frame_text,
+                       textvariable=var,
+                       justify=LEFT,
+                       fg='black',
+                       image=photo,
+                       compound=CENTER,
+                       font=('华文行楷', 40)
+                       )
+    Text_label.pack()
 
 
-root = Tk()
-var = StringVar()
-Home_page()
-root.mainloop()
+# Here is the codes of button.
+def Button_frame():
+    The_Button = Button(frame_button,
+                        text='Follow your heart！',
+                        fg='black',
+                        font=('华文楷体',40),
+                        command = Go_now
+                        )
+    The_Button.pack()
+
+
+if __name__ == '__main__':
+    root = Tk()  # Creat the window
+    var = StringVar()  # Set the textvariable
+    # Get the photo here, or we cann't see the photo there.
+    photo = ImageTk.PhotoImage(file=r"I:\Learning_of_Python\pictures\glass.jpg")  # Get the picture here
+
+    frame_text = Frame(root)  # This is the frame of text prompt.
+    frame_button = Frame(root)  # This is the frame of button.
+
+    Text_Prompt()  # Get the Text_Prompt
+    Button_frame()  # Get the Button_frame
+
+    frame_text.pack(padx=10, pady=10)
+    frame_button.pack(padx=10, pady=10)
+    root.mainloop()
